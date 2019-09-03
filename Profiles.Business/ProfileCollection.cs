@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Profiles.Business;
 
 namespace Profiles.Business
 {
@@ -58,10 +59,18 @@ namespace Profiles.Business
             };
         }
 
+        public List<Business.Profile> Search(string searchString)
+        {
+            var result = from Profile in this.ProfileList
+                         where Profile.FirstName.Contains(searchString) || Profile.LastName.Contains(searchString)
+                         select Profile;
+
+            return result.ToList<Business.Profile>();
+        }
 
         public Profile GetProfile(int ID)
         {
-            return ProfileList.First();
+            return ProfileList.Find(Profile=>Profile.ID==ID);
         }
 
     }

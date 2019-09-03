@@ -14,15 +14,29 @@ namespace WebApplication.Models.Profile
             ProfileCollection collection = new ProfileCollection();
 
             Profiles.Business.Profile userProfile = collection.GetProfile(ID);
-
-            FullName = userProfile.FirstName + " " + userProfile.LastName;
-            SPIERole = userProfile.SPIERole;
-            Company = userProfile.Company;
-            JobTitle = userProfile.JobTitle;
-            PictureFileName = userProfile.PictureFileName;
-
+            
+            /* Only fill a profile if a valid one has been found */
+            if(userProfile != null)
+            {
+                FullName = userProfile.FirstName + " " + userProfile.LastName;
+                SPIERole = userProfile.SPIERole;
+                Company = userProfile.Company;
+                JobTitle = userProfile.JobTitle;
+                PictureFileName = userProfile.PictureFileName;
+            }
         }
 
+        public bool Empty
+        {
+            get
+            {
+                return (string.IsNullOrEmpty(FullName) &&
+                        string.IsNullOrEmpty(SPIERole) &&
+                        string.IsNullOrEmpty(Company) &&
+                        string.IsNullOrEmpty(JobTitle) &&
+                        string.IsNullOrEmpty(PictureFileName));
+            }
+        }
 
         public string FullName;
         public string SPIERole;

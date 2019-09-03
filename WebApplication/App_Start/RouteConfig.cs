@@ -14,6 +14,12 @@ namespace WebApplication
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Search",
+                url: "search/view/{id}",
+                defaults: new { controller = "search", action = "searchView", id = UrlParameter.Optional}
+            );
+
+            routes.MapRoute(
                 name: "Profiles",
                 url: "profiles/view/{id}",
                 defaults: new
@@ -30,7 +36,6 @@ namespace WebApplication
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            
         }
     }
 }
