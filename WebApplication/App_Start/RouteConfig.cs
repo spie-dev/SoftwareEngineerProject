@@ -13,24 +13,44 @@ namespace WebApplication
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            
             routes.MapRoute(
-                name: "Profiles",
-                url: "profiles/view/{id}",
+                name: "ProfileEdit",
+                url: "profiles/edit/{id}",
                 defaults: new
                 {
                     controller = "profile",
-                    action = "profileView",
+                    action = "edit",
                     id = UrlParameter.Optional
                 }
+            );
+            
+
+            routes.MapRoute(
+               name: "Profiles",
+               url: "profiles/view/{id}",
+               defaults: new
+               {
+                   controller = "profile",
+                   action = "profileView",
+                   id = UrlParameter.Optional
+               }
+           );
+
+
+            routes.MapRoute(
+                name: "HomeCountroller",
+                url: "Home/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "AccountManager", action = "Login", id = UrlParameter.Optional }
             );
 
-            
+
         }
     }
 }

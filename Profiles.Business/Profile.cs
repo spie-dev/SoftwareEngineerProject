@@ -13,6 +13,8 @@ namespace Profiles.Business
         public string SPIERole;
         public string Company;
         public string JobTitle;
+        public string UserId;
+        public string Password;
         public string PictureFileName;
         public int ID;
     }

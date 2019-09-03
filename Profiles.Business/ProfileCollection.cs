@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Profiles.Business
 {
-    public class ProfileCollection
+    public sealed class ProfileCollection
     {
 
         public List<Profile> ProfileList;
 
-        public ProfileCollection()
+        private ProfileCollection()
         {
             ProfileList = new List<Profile>()
             {
@@ -23,7 +23,9 @@ namespace Profiles.Business
                     Company = "SPIE",
                     SPIERole = "SPIE Member",
                     JobTitle = "UX/UI Designer",
-                    PictureFileName = "jimbob.jpg"
+                    PictureFileName = "jimbob.jpg",
+                    UserId="jbob",
+                    Password="jbob"
                 },
                 new Profile()
                 {
@@ -33,7 +35,9 @@ namespace Profiles.Business
                     Company = "SPIE",
                     SPIERole = "SPIE Fellow",
                     JobTitle = "Optics & Photonics Researcher",
-                    PictureFileName = "samanthajohnson.jpg"
+                    PictureFileName = "samanthajohnson.jpg",
+                    UserId="sjohn",
+                    Password="sjohn"
                 },
                 new Profile()
                 {
@@ -43,7 +47,9 @@ namespace Profiles.Business
                     Company = "NASA",
                     SPIERole = "SPIE Conference Chair",
                     JobTitle = "Astrophysicist",
-                    PictureFileName = "jackiezope.jpg"
+                    PictureFileName = "jackiezope.jpg",
+                    UserId="jzope",
+                    Password="jzope"
                 },
                  new Profile()
                 {
@@ -53,16 +59,51 @@ namespace Profiles.Business
                     Company = "Blue Origins",
                     SPIERole = "SPIE Member",
                     JobTitle = "Embedded Optical Engineer",
-                    PictureFileName = "jonathonwatkinson.jpg"
+                    PictureFileName = "jonathonwatkinson.jpg",
+                    UserId="jwatkin",
+                    Password="jwatkin"
                 }
             };
+
+
         }
 
-
-        public Profile GetProfile(int ID)
+        private static ProfileCollection instance = null;
+        public static ProfileCollection Instance
         {
-            return ProfileList.First();
+            get
+            {
+                if(instance == null)
+                {
+                    instance = new ProfileCollection();
+                }
+                return instance;
+            }            
+           
         }
+
+
+        public void SaveProfile(Profile model)
+        {
+            Profile profile = ProfileList.Where(x => x.ID == model.ID).FirstOrDefault();
+            profile.FirstName = model.FirstName;
+            profile.LastName = model.LastName;
+
+            profile.SPIERole = model.SPIERole;
+            profile.Company = model.Company;
+            profile.JobTitle = model.JobTitle;
+
+        }
+        public Profile GetProfile(int? ID)
+        {
+            return ProfileList.Where(x => x.ID == ID).FirstOrDefault();
+        }
+
+        public IEnumerable<Profile> GetProfileByName()
+        {
+            return ProfileList;
+        }
+
 
     }
 }
