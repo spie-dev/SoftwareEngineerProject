@@ -11,9 +11,24 @@ namespace WebApplication.Controllers
     {
         public ActionResult profileView(string id)
         {
-            ProfileModel model = new ProfileModel(Int32.Parse(id));
+            ActionResult actionResult = null;
 
-            return View("Profile", model);
+            int result = -1;
+            if (Int32.TryParse(id, out result))
+            {
+                ProfileModel model = new ProfileModel(Int32.Parse(id));
+                if (model.IsValid)
+                {
+                    actionResult = View("Profile", model);
+                }                
+            }
+           
+            if (actionResult == null)
+            { 
+                actionResult = Redirect("~/Home/Index");
+            }
+
+            return actionResult;
         }
     }
 }

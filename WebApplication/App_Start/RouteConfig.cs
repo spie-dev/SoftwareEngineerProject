@@ -22,7 +22,25 @@ namespace WebApplication
                     action = "profileView",
                     id = UrlParameter.Optional
                 }
+            );        
+
+            routes.MapRoute(null,
+              "admin/edit/{id}",
+              new
+              {
+                  controller = "Admin",
+                  action = "Edit"
+              }
             );
+
+            routes.MapRoute(null,
+               "home/index/{search}",
+               new
+               {
+                   controller = "Home",
+                   action = "Index"
+               }
+           );
 
             routes.MapRoute(
                 name: "Default",

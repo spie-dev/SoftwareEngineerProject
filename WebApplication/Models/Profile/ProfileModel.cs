@@ -8,19 +8,23 @@ namespace WebApplication.Models.Profile
 {
     public class ProfileModel
     {
+        public bool IsValid { get; }
 
         public ProfileModel(int ID)
         {
+            IsValid = false;
             ProfileCollection collection = new ProfileCollection();
 
             Profiles.Business.Profile userProfile = collection.GetProfile(ID);
-
-            FullName = userProfile.FirstName + " " + userProfile.LastName;
-            SPIERole = userProfile.SPIERole;
-            Company = userProfile.Company;
-            JobTitle = userProfile.JobTitle;
-            PictureFileName = userProfile.PictureFileName;
-
+            if (userProfile != null)
+            {
+                IsValid = true;
+                FullName = userProfile.FirstName + " " + userProfile.LastName;
+                SPIERole = userProfile.SPIERole;
+                Company = userProfile.Company;
+                JobTitle = userProfile.JobTitle;
+                PictureFileName = userProfile.PictureFileName;
+            }
         }
 
 

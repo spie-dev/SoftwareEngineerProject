@@ -29,6 +29,9 @@
         @RenderBody()
         <hr />
         <footer>
+            <div id="logout" class="panel-footer">
+                <strong>@Html.ActionLink("Log out", "Logout", "Home")</strong>
+            </div>
             <p>&copy; @DateTime.Now.Year - SPIE Profiles</p>
         </footer>
     </div>

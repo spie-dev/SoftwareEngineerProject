@@ -20,23 +20,28 @@
             </tr>
             <tr>
                 <td>
-                    <span class="formText01" style="color: #000000; font-size: 20px;">Search Profiles</span>
-                    <table>
-                        <tr>                            
-                            <td style="vertical-align:bottom;"><input name="txtSearch" type="text" maxlength="100" id="txtSearch" class="formFieldCommon inputSearch" style="font-size:18px;height:30px;padding:4px;border:solid 1px #bfc0c1;"></td>
-                            <td style="vertical-align:bottom;"><a onclick="this.href = '/Home/Index/' + document.getElementById('txtSearch').value.replace(/[^a-zA-Z ]/g, '');" id="hSearch" style="height:30px;cursor:pointer;" onmouseout="document.getElementById('imgSearch').src='/images/MagGlass_Btn_Norm.jpg';" onmouseover="document.getElementById('imgSearch').src='/images/MagGlass_Btn_Over.jpg';"><img id="imgSearch" src="/images/MagGlass_Btn_Norm.jpg" border="0"></a></td>                            
-                        </tr>
-                    </table>
+                    <span class="formText01" style="color: #000000; font-size: 20px;">Search Profiles</span> <br>
+                    <input name="txtSearch" type="text" maxlength="100" id="txtSearch" class="formFieldCommon inputSearch" style="float:left;font-size:18px;height:30px;padding:4px;  border: solid 1px #bfc0c1;">
+                    <a id="hSearch" style="height:30px;cursor:pointer;" onmouseout="document.getElementById('imgSearch').src='/images/MagGlass_Btn_Norm.jpg';" onmouseover="document.getElementById('imgSearch').src='/images/MagGlass_Btn_Over.jpg';"><img id="imgSearch" src="/images/MagGlass_Btn_Norm.jpg" border="0"></a>
                 </td>
 
                 <td>
                     <span class="formText01" style="color: #000000; font-size: 20px;">New to SPIE Profiles?</span> <br>
                     <a id="ctl00_Main_hCreateAccount" class="SignUp" href="/account/create/accountinfo">Sign Up</a>
                     <span class="formText07" style="font-size: 15px;">Create your profile today! <br>It's free and easy.</span>
+
                 </td>
+
+
             </tr>
+
+
         </tbody>
+
+
+
     </table>
+
 
     <div style="background-color: #cb232a; height: 2px; width: 568px; margin-top: 20px;">
     </div>
@@ -44,7 +49,9 @@
     <div class="formText01" style="color: #000000; font-size: 20px; margin-top: 20px; margin-bottom: 10px;">Going Mobile</div>
 
     <table>
+
         <tr>
+
             <td>
                 <div style="width: 302px;">
                     <div style="height: 98px; width: 290px; background-color: #ededee;">
@@ -121,12 +128,13 @@
 
             <div style="display:inline-block;vertical-align:top;height:72px;width:220px;margin-left: 20px;">
                 <div>
-                    <a href="/profiles/view/@profile.ID">@profile.FirstName @profile.LastName </a>
+                    <a target="_blank" href="/profiles/view/@profile.ID">@profile.FirstName @profile.LastName </a>
                 </div>
                 <div>
                     @profile.Company <br />
                     @profile.SPIERole
                 </div>
+
             </div>
         </div>
         <div style="height: 1px; width: 316px; background-color: #bfc0c1;"></div>
