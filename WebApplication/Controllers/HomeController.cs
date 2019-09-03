@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Profiles.Business;
+using WebApplication.DAL;
 
 namespace WebApplication.Controllers
 {
@@ -11,9 +11,10 @@ namespace WebApplication.Controllers
     {
         public ActionResult Index()
         {
-            ProfileCollection collection = new ProfileCollection();
-
-            return View(collection);
+            using (ProfileContext db = new ProfileContext())
+            {
+                return View(db.Profiles.ToList());
+            }
         }
 
     }

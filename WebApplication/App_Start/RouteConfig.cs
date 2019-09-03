@@ -25,6 +25,39 @@ namespace WebApplication
             );
 
             routes.MapRoute(
+                name: "ProfilesSearch",
+                url: "profiles/search/{id}",
+                defaults: new
+                {
+                    controller = "ProfileSearch",
+                    action = "Search",
+                    id = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
+                name: "ProfileEdit",
+                url: "profiles/edit/{id}",
+                defaults: new
+                {
+                    controller = "Profile",
+                    action = "Edit",
+                    id = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
+                name: "ProfileSave",
+                url: "profiles/save/{id}",
+                defaults: new
+                {
+                    controller = "Profile",
+                    action = "Save",
+                    id = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

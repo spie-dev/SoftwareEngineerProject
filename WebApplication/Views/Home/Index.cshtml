@@ -1,5 +1,5 @@
-﻿@using Profiles.Business;
-@model ProfileCollection
+﻿@using WebApplication.Models.Profile;
+@model IEnumerable<ProfileModel>
 
 @{
     ViewBag.Title = "Profile Home Page";
@@ -21,8 +21,20 @@
             <tr>
                 <td>
                     <span class="formText01" style="color: #000000; font-size: 20px;">Search Profiles</span> <br>
-                    <input name="txtSearch" type="text" maxlength="100" id="txtSearch" class="formFieldCommon inputSearch" style="float:left;font-size:18px;height:30px;padding:4px;  border: solid 1px #bfc0c1;">
-                    <a id="hSearch" style="height:30px;cursor:pointer;" onmouseout="document.getElementById('imgSearch').src='/images/MagGlass_Btn_Norm.jpg';" onmouseover="document.getElementById('imgSearch').src='/images/MagGlass_Btn_Over.jpg';"><img id="imgSearch" src="/images/MagGlass_Btn_Norm.jpg" border="0"></a>
+                    <table>
+                        <tr>
+                            <td style="vertical-align:bottom;">
+                                <form method="post">
+                                    <input name="txtSearch" type="text" maxlength="100" id="txtSearch" class="form-control inputSearch" style="float:left;font-size:18px;height:30px;padding:4px;  border: solid 1px #bfc0c1;width:100%;">
+                                    <input id="hiddenSearchId" type="hidden" name="profileId" value="" />
+                                </form>
+                            </td>
+                            <td>
+                                <a id="hSearch" style="height:30px;cursor:pointer;" onmouseout="document.getElementById('imgSearch').src='/images/MagGlass_Btn_Norm.jpg';" onmouseover="document.getElementById('imgSearch').src='/images/MagGlass_Btn_Over.jpg';"><img id="imgSearch" src="/images/MagGlass_Btn_Norm.jpg" alt="Search"></a>
+                            </td>
+                        </tr>
+                    </table>
+
                 </td>
 
                 <td>
@@ -56,12 +68,12 @@
                 <div style="width: 302px;">
                     <div style="height: 98px; width: 290px; background-color: #ededee;">
                         <div style="padding: 17px 0px 0px 12px;">
-                            <table border=0 cellpadding=0 cellspacing=0 style="background-color: Transparent;">
+                            <table class="gomobile">
                                 <tr>
-                                    <td align=left valign=top>
-                                        <a href="http://itunes.apple.com/us/app/spie-profiles/id384217246?mt=8"><img id=imgProfilesApp src="/images/ProfilesApp_norm.jpg" alt="SPIE Profiles App" height=70 width=70 border=0 /></a>
+                                    <td class="gomobile">
+                                        <a href="http://itunes.apple.com/us/app/spie-profiles/id384217246?mt=8"><img id=imgProfilesApp src="/images/ProfilesApp_norm.jpg" alt="SPIE Profiles App" height=70 width=70 /></a>
                                     </td>
-                                    <td align=left valign=top>
+                                    <td class="gomobile">
                                         <div style="padding-left: 6px; padding-top: 3px;">
                                             <span class="formText01" style="font-size: 23px; font-weight: normal; color: #000000;">SPIE Profiles App</span> <br />
                                             <span class="formText07" style="font-size: 15px; margin-top: -1px;">Easy access to SPIE profiles</span> <br />
@@ -79,12 +91,12 @@
                 <div style="width: 278px;">
                     <div style="height: 98px; width: 266px; background-color: #ededee;">
                         <div style="padding: 17px 0px 0px 12px;">
-                            <table border=0 cellpadding=0 cellspacing=0 style="background-color: Transparent;">
+                            <table class="gomobile">
                                 <tr>
-                                    <td align=left valign=top>
-                                        <a href="http://itunes.apple.com/us/app/spie-conferences/id349678364?mt=8" onmouseover="document.getElementById('imgConfApp').src='/images/ConfApp_Over.jpg';" onmouseout="document.getElementById('imgConfApp').src='/images/ConfApp_norm.jpg';"><img id=imgConfApp src="/images/ConfApp_norm.jpg" alt="SPIE Conference App" height=70 width=70 border=0 /></a>
+                                    <td class="gomobile">
+                                        <a href="http://itunes.apple.com/us/app/spie-conferences/id349678364?mt=8" onmouseover="document.getElementById('imgConfApp').src='/images/ConfApp_Over.jpg';" onmouseout="document.getElementById('imgConfApp').src='/images/ConfApp_norm.jpg';"><img id=imgConfApp src="/images/ConfApp_norm.jpg" alt="SPIE Conference App" height=70 width=70 /></a>
                                     </td>
-                                    <td align=left valign=top>
+                                    <td class="gomobile">
                                         <div style="padding-left: 6px; padding-top: 3px;">
                                             <span class="formText01" style="font-size: 23px; font-weight: normal; color: #000000;">Conference App</span> <br />
                                             <span class="formText07" style="font-size: 15px; margin-top: -1px;">Get convenient updates</span> <br />
@@ -120,23 +132,78 @@
     <div style="background-color: #000000; height: 8px; width: 316px;">
     </div>
 
-    @foreach (var profile in Model.ProfileList.Take(3))
-    {
-        <div style="margin: 10px 0px;">
+    @{
+        int i = 0;
+        foreach (var profile in Model.Take(3))
+        {
+            var uniqueId = "imagePerson" + i.ToString();
+            i += 1;
 
-            <img id="imagePerson" title="@profile.FirstName" alt="@profile.FirstName" src="/images/profilepictures/@profile.PictureFileName" height="72" width="56" style="border-width:0px;display:inline-block;" />
+            <div style="margin: 10px 0px;">
 
-            <div style="display:inline-block;vertical-align:top;height:72px;width:220px;margin-left: 20px;">
-                <div>
-                    <a target="_blank" href="/profiles/view/@profile.ID">@profile.FirstName @profile.LastName </a>
+                <img id="@uniqueId" title="@profile.FirstName" alt="@profile.FirstName" src="/images/profilepictures/@profile.PictureFileName" height="72" width="56" style="display:inline-block;" />
+
+                <div style="display:inline-block;vertical-align:top;height:72px;width:220px;margin-left: 20px;">
+                    <div>
+                        <a href="/profiles/view/@profile.Id">@profile.FirstName @profile.LastName </a>
+                    </div>
+                    <div>
+                        @profile.Company <br />
+                        @profile.SPIERole
+                    </div>
+
                 </div>
-                <div>
-                    @profile.Company <br />
-                    @profile.SPIERole
-                </div>
-
             </div>
-        </div>
-        <div style="height: 1px; width: 316px; background-color: #bfc0c1;"></div>
+            <div style="height: 1px; width: 316px; background-color: #bfc0c1;"></div>
+        }
     }
 </div>
+
+@section scripts {
+    <link href="@Href("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
+    <script src="@Href("~/Scripts/jquery-ui-1.12.1.min.js")" type="text/javascript"></script>
+
+    <script>
+        function IsValidJSON(str) {
+            try {
+                JSON.parse(str);
+            } catch (e) {
+                return false;
+            }
+            return true;
+        }
+
+        $("#txtSearch").autocomplete({
+            autoFocus: true,
+            datatype: "json",
+            delay: 250,
+            minLength: 1,
+            source: function (request, response) {
+                var params = '{ "s": "' + $("#txtSearch").val() + '" }';
+                if (!IsValidJSON(params)) {
+                    console.log("Profile search text contains invalid json - " + params);
+                    return;
+                }
+                $.ajax({
+                    url: '@Url.Action("Search", "ProfileSearch")',
+                    type: "POST",
+                    contentType: "application/json",
+                    data: params,
+                    datatype: "json",
+                    success: function (data) {
+                        response($.map(data, function (item) { return { label: item.FullName, value: item.ID }; }));
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("AJAX request error - " + xhr.responseText);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                this.value = ui.item.label;
+                $("#hiddenSearchId").val( ui.item.value );
+                window.location.href = "@Url.Action("profileView", "profile")" + "/" + ui.item.value;
+                return false;
+            }
+        });
+    </script>
+}

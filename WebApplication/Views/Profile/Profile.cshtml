@@ -14,16 +14,21 @@
         <td width="560" style="vertical-align: top; padding-right: 20px; padding-top: 18px;">
 
             <h1 class="formHead2"> @Model.FullName </h1>
-                <span class="formText07"> @Model.JobTitle </span>
-                <br />
-            
-                <span class="formText07"> @Model.Company </span>
-                <br />
-            
+            <span class="formText07"> @Model.JobTitle </span>
+            <br />
+
+            <span class="formText07"> @Model.Company </span>
+            <br />
+
 
             <span class="formText07"> @Model.SPIERole</span>
             <br />
             <br />
+
+            <!-- TODO: place behind user check once authentication is added -->
+            <div>
+                @Html.ActionLink("Edit Profile", "Edit", "Profile")
+            </div>
 
         </td>
     </tr>

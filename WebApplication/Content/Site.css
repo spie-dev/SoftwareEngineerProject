@@ -22,3 +22,20 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Set borderless images */
+img {
+    border: 0;
+}
+
+table.gomobile {
+    background-color: transparent;
+    border: 0;
+    border-spacing:0;
+    padding:0;
+}
+
+td.gomobile {
+    text-align:left;
+    vertical-align:top;
+}
