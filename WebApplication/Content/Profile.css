@@ -1,0 +1,32 @@
+﻿
+.ProfileBody
+{
+    margin-bottom: 20px;
+    background-color: #f2f2f2;
+    max-width: 800px;
+    position: relative;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-bottom:35px;
+}
+
+.EditButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.ProfileInfo {
+    vertical-align: top;
+    padding-right: 20px;
+    padding-top: 40px;
+}
+
+.ProfileImageContainer {
+    width: 200px;
+    position: relative;
+    padding: 30px 10px 15px 20px;
+    height: 200px;
+    overflow: hidden;
+    display: inline-block;
+}

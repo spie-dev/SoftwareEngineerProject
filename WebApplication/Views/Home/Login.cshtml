@@ -1,0 +1,50 @@
+﻿@model string[]
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+</style>
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <fieldset>
+
+        @Html.AntiForgeryToken()
+        @if (@ViewBag.Message != null)
+        {
+            <div class="AlertMessage">
+                @ViewBag.Message
+            </div>
+        }
+            <p><small>Your login has been automatically generated. <br />Your username is the first letter of your first name + "." + last name</small></p>
+        <table>
+            <tr>
+                <td>@Html.Label("Username")</td>
+                <td>@Html.TextBoxFor(a => a[0])</td>
+                <td>@Html.ValidationMessageFor(a => a[0])</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Password")
+                </td>
+                <td>
+                    @Html.PasswordFor(a => a[1])
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a[1])
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Login" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+}
+

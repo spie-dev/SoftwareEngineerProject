@@ -1,0 +1,89 @@
+﻿.AppPromoBackground {
+    width: 280px;
+    height: 110px;
+    padding: 10px;
+    background-color: #ededee;
+    margin: 0 5px;
+}
+
+.AppPromoTitle {
+    color: #000000;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.SectionLabel {
+    color: #000000;
+    font-size: 20px;
+}
+
+.SearchProfile {
+    width: 100%;
+    margin: 5px 0;
+    display: inline-block;
+}
+
+.Hidden {
+    display: none;
+}
+
+.SearchProfileBreak {
+    width: 100%;
+    height: 1px;
+    background-color: #bfc0c1;
+    display: inline-block;
+}
+
+#ProfilePromos {
+    vertical-align: top;
+    background-color: #ededee;
+    margin-top: 10px;
+    padding: 5px 10px 10px 10px;
+    width: 315px;
+    float: right;
+}
+
+.AppIcon {
+    padding: 5px;
+}
+
+    .AppIcon:hover {
+        filter: brightness(120%);
+    }
+
+.formText01 {
+    font-size: 23px;
+    font-weight: normal;
+    color: #000000;
+}
+
+.formText07 {
+    font-size: 15px;
+    margin-top: -1px;
+}
+
+.AppLink {
+    font-size: 15px;
+}
+
+.ProfileInfoBox {
+    display: inline-block;
+    vertical-align: top;
+    height: 72px;
+    margin-left: 20px;
+}
+
+.ProfileImageContainer {
+    width: 75px;
+    height: 75px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.ProfileContainer {
+    margin-top: 5px;
+    height: 70px;
+}

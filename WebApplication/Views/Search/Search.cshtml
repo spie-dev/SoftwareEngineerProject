@@ -1,0 +1,94 @@
+﻿@using Profiles.Business;
+@model List<Profile>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .SearchResults {
+        width: 500px;
+    }
+
+    .SearchProfile {
+        width: 100%;
+        margin: 5px 0;
+        display: inline-block;
+    }
+
+    .SearchProfileBreak {
+        line-height: 5px;
+        width: 50%;
+        height: 1px;
+        background-color: #bfc0c1;
+        display: inline-block;
+    }
+
+    .InfoContainer {
+        display: inline-block;
+        vertical-align: top;
+        height: 72px;
+        margin-left: 20px;
+    }
+
+    .ProfileRow {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+</style>
+
+<h2>Search</h2>
+
+<table class="SearchResults">
+    <tr>
+        <td colspan="2">
+            <input name="txtSearch" type="text" maxlength="100" id="txtSearch" autofocus class="formFieldCommon SearchInput">
+            <a class="SearchButton" />
+            <br />
+            <br />
+        </td>
+    </tr>
+    @foreach (var profile in Model)
+    {
+        <tr class="ProfileRow">
+            <td>
+                <a href="~/profiles/view/@profile.ID">View Profile</a>
+            </td>
+            <td>
+                <span data-id="@profile.ID" data-name="@(profile.FirstName.ToLower()+' '+profile.LastName.ToLower())" class="SearchProfile">
+                    <img title="@profile.FirstName" class="ProfileImageSmall" alt="@profile.FirstName" src="/images/profilepictures/@profile.PictureFileName" />
+
+                    <span class="InfoContainer">
+                        <span>
+                            <a target="_blank" href="/profiles/view/@profile.ID">@profile.FirstName @profile.LastName</a>
+                        </span>
+                        <br />
+                        <span>
+                            @profile.Company <br />
+                            @profile.SPIERole
+                        </span>
+                    </span>
+
+                </span>
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+<br />
+<a href="/" class="btn btn-secondary">Home</a>
+
+<script type="text/javascript">
+    $(document).ready(() => {
+        $(document).on("click", '.SearchButton', (event) => {
+            location.href = ("/Search/" + $('.SearchInput').val());
+        });
+
+        $(document).on("keypress", '.SearchInput', (event) => {
+            if (event.which == 13)
+                location.href = ("/Search/" + $('.SearchInput').val());
+        });
+    });
+</script>
