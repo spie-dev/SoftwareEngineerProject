@@ -24,9 +24,5 @@ Pull down a zip of this by clicking the "Clone or download" link on the upper ri
 
 
 # How to submit this
-1. Create a new private repo in GitHub
-2. Install the Github extension for visual studio (in visual studio, click tools->"extensions and updates" and search for "Github Extension for Visual Studio")
-3. Connect to GitHub and the repo with Visual studio. Use the [extension's website](https://visualstudio.github.com/) to see screenshots of how to connect
-4. Update your README.md file to specify what bug fixes and functionality adds you did, as well as any new instructions for set up
-5. Push your modified code to your private repo
-6. Send your SPIE contact an invite to the repo
+1. Update your README.md file to specify what bug fixes and functionality adds you did, as well as any new instructions for set up
+2. Send your SPIE contact a zip file of the solution. 
