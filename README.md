@@ -23,6 +23,14 @@ Pull down a zip of this by clicking the "Clone or download" link on the upper ri
 * Add the ability for a profile user to log into the website
 
 
-# How to submit this
-1. Update your README.md file to specify what bug fixes and functionality adds you did, as well as any new instructions for set up
-2. Send your SPIE contact a zip file of the solution. 
+
+# How to access and submit this project
+
+1. Initialize a new local .git repository (git init .)
+2. Inside your new repo, run 'git PULL [URL of SPIE project here]'. You can access this pull link by clicking the green 'clone/download' button in the upper right corner of the Code tab on Github. You should now have all the starter files that you need.
+3. Open the WebApplication.sln with Visual Studio. Use Ctrl+Shift+b to build the project, then click the "IIS Express" toolbar button at the top to run the website.
+4. Go about your bug fixes / enhancements (preferably committing often throughout - no need to git-push anything).
+5. Update your README.md file to specify what bug fixes and functionality adds you did, as well as any new instructions for set-up.
+6. When you're finished, create a git bundle with the command 'git bundle create your_name.bundle master' and send the generated bundle file to your SPIE contact.
+
+In order to verify your git bundle, you can un-bundle the repo by cloning the bundle file (git clone your_name.bundle).  Then change into the new directory that was generated, and run 'git pull origin master'.  At this point, the directory should look exactly as you left it before you bundled!
