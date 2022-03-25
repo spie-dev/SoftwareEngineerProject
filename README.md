@@ -15,10 +15,9 @@ If you DO get all listed bug fixes/functionality done feel free to add other fun
 
 # Functionality Adds
 * Add the ability to use the search bar, and have it display a list of profiles that have a partial match with either first or last name
-* Add the ability for someone to edit a profile and persist these changes
-  * Also: Move the ability to edit behind a log-in so random users can't maliciously edit someone else's profile!
 * Add the ability for a profile user to log into the website
-
+* Add the ability for someone to edit their profile and persist these changes
+* Persist the profile changes to some kind of permanent storage (bonus if this lives within a Docker container!)
 
 # How to access and submit this project
 
